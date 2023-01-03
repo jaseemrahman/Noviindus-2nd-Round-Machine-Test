@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mptt_tags %}
+
+{% block content %}
+
+<h1 style="color: green; font-size:3em;"><b>Noviindus Technologies</b></h1>
+<h5>{{today}}</h5>
+<hr>
+{% comment %} <ul class="root">
+    {% recursetree books %}
+        <li>
+         
+          <form action="{% url 'last' node.id %}" method="post">
+            <b>{{ node.title }}</b>
+            <select name="direction" id="direction">
+                <option value="left">{{ node.title }}</option>
+              </select>
+            {% csrf_token %}
+            <select name="direction" id="direction">
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+              </select>
+            <button class="btn btn-success btn-sm" type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            {% include 'book/last.html' %} 
+            </form>
+            
+      <hr>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>   {% endcomment %}
+
+
+<form action="{% url 'last'  %}" method="post">
+
+    <select class="btn btn-dark btn-sm" name="book" id="book">
+        {% for book in books %}
+        <option value="{{book.id}}">{{ book.title }}</option>
+        {% endfor %}
+      </select>
+   
+    {% csrf_token %}
+
+    <select class="btn btn-light btn-sm" name="direction" id="direction">
+        <option value="left">Left</option>
+        <option value="right">Right</option>
+      </select>
+    <button class="btn btn-success btn-sm" type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+
+{% endblock %} 

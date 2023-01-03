@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<table class="table" id="">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Parent ID</th>
+            <th>BOOK</th>
+            <th>POSITION</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {%for book in books%}
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.parent}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.position}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+
+{% endblock %}
