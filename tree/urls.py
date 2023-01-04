@@ -6,5 +6,6 @@ from tree import views
 urlpatterns = [
     path('',views.tree,name='tree'),
     path('table',views.table_view,name='table'),
-    path('last',views.last_child,name='last'),
+    # path('last',views.last_child,name='last'),
+    path('ajax',views.ajax_function,name='ajax'),
 ]

@@ -14,7 +14,7 @@ class Book(MPTTModel):
 
     title = models.CharField(max_length=300,blank=True)
     description=models.CharField(max_length=300,blank=True)
-    position =models.IntegerField(choices=POSITION_CHOICES,default=RIGHT,null=True,blank=True)
+    position =models.IntegerField(choices=POSITION_CHOICES,null=True,blank=True)
     parent = TreeForeignKey('self',null=True,blank=True,related_name='children' , on_delete=models.CASCADE)
 
     def __str__(self):

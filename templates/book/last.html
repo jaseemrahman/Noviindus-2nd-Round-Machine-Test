@@ -1,10 +1,6 @@
-{% extends 'base.html' %}
-{% load static %}
 
-{% block content %} 
 {% if last_child %}
-<h3><b>Last child in {{direction}} Direction is {{last_child}}</b></h3>
+Last child in {{direction}} Direction is {{last_child}}
 {% else %}
-<h3><b>There is no child to diplay</b></h3> 
+There is no child to diplay
 {% endif %}
- {% endblock %}

@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load mptt_tags %}
+{% block javascript %}
+    <script src="{% static 'js/tree.js' %}"></script>
+  
+{% endblock %}
+
+
 
 {% block content %}
 
@@ -34,23 +40,25 @@
         </li>
     {% endrecursetree %}
 </ul>   {% endcomment %}
+<div id="demo"></div>
 
 
-<form action="{% url 'last'  %}" method="post">
+<form action="" method="" id='form'>
 
     <select class="btn btn-dark btn-sm" name="book" id="book">
         {% for book in books %}
-        <option value="{{book.id}}">{{ book.title }}</option>
+        <option value="{{book.id}}" >{{ book.title }}</option>
         {% endfor %}
       </select>
    
     {% csrf_token %}
 
     <select class="btn btn-light btn-sm" name="direction" id="direction">
-        <option value="left">Left</option>
+        <option value="left" >Left</option>
         <option value="right">Right</option>
       </select>
-    <button class="btn btn-success btn-sm" type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+    {% comment %} <button class="btn btn-success btn-sm" type="submit"><i class="fa-solid fa-arrow-right"></i></button> {% endcomment %}
+    <button onclick="last_child()" class="btn btn-primary btn-sm" type="submit"><i class="fa-solid fa-arrow-right"></i></button>
     </form>
 
 {% endblock %} 
